@@ -1,0 +1,7 @@
+aiogram==3.*
+telethon
+opentele
+sqlalchemy
+asyncpg
+redis
+python-dotenv
