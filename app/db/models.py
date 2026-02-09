@@ -1,25 +1,41 @@
-from sqlalchemy import Column, Integer, String, Boolean, Text
+from sqlalchemy import Column, Integer, String, Boolean, Text, BigInteger
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
+
 class Bot(Base):
-    __tablename__ = "bots"
+    __tablename__ = "Bot"
+
     id = Column(Integer, primary_key=True)
-    owner_id = Column(Integer)
+    ownerId = Column(Integer)
+    templateId = Column(Integer)
     token = Column(String)
-    is_active = Column(Boolean, default=True)
+    isActive = Column(Boolean)
+
 
 class BotText(Base):
-    __tablename__ = "bot_texts"
+    __tablename__ = "BotText"
+
     id = Column(Integer, primary_key=True)
-    bot_id = Column(Integer)
+    botId = Column(Integer)
     key = Column(String)
     text = Column(Text)
 
-class Session(Base):
-    __tablename__ = "sessions"
+
+class TemplateText(Base):
+    __tablename__ = "TemplateText"
+
     id = Column(Integer, primary_key=True)
-    bot_id = Column(Integer)
-    user_id = Column(Integer)
-    path = Column(String)
+    templateId = Column(Integer)
+    key = Column(String)
+    text = Column(Text)
+
+
+class Session(Base):
+    __tablename__ = "Session"
+
+    id = Column(Integer, primary_key=True)
+    botId = Column(Integer)
+    userId = Column(BigInteger)
+    path = Column(Text)
